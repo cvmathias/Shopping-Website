@@ -1,0 +1,82 @@
+/* Put a font style to the page*/
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400&display=swap');
+
+body {
+    font-family: 'Source Serif Pro', serif;
+    background-color: #bbb69a;
+}
+
+/* Putting the tax, subtoal on the right */
+.order-elements {
+    text-align: right;
+}
+
+/* Setting the menu fixed so when the user scroll down it can see the view card button*/
+.menu {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    height: 11%;
+    background-color: rgb(232, 235, 236);
+    font-size: 20px;
+    color: rgb(155, 151, 151);
+    z-index: 1000;
+    padding: 10px;
+
+}
+
+.menu-title {
+    margin-top: 20px;
+}
+
+.offcanvas-body {
+    color: black;
+}
+
+.items {
+    margin-top: 15vh;
+    color: black;
+}
+
+/* Putting the button a style so it can be on the right siide*/
+#viewcard {
+    top: 0;
+    z-index: 10000;
+    margin-left: 70%;
+    margin-top: -83px;
+}
+
+#offcanvasRightLabel {
+    color: black;
+}
+
+/* Styling the button that deletes the row*/
+.delete-row {
+    color: red;
+    background-color: rgb(241, 255, 255);
+    border-radius: 5px;
+}
+
+.input-group {
+    margin-left: 15px;
+}
+
+/* Deleting the Up arrow and down arrow of the inputs for Payment method */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*Responsiveness for Desktop */
+@media (min-width: 1000px) {
+    #viewcard {
+        margin-left: 90%;
+        margin-top: -100px;
+        padding-top: -5px;
+    }
+
+    .order-elements {
+        padding-left: 75%;
+    }
+}
