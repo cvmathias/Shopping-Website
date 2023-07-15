@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Mathias Cano Vega">
+<title>Final Project</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+<link rel="stylesheet" href="includes/style.css">
+</head>
+<body>
+<section class="menu">
+  <h1 class="menu-title">DOCE </h1>
+     <!--Creating the button to see the items you add to your cart-->
+      <input class="btn btn-primary" id="viewcard"  value="View Cart" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+
+      <!--Creating the canva so the user can see their cart and change the currency of the website-->
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+          <h5 id="offcanvasRightLabel">Shopping Cart</h5>
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        
+<!--Selector for the currency, and cart section-->
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-default">Currency</span>
+      <select class="form-control" id="currency-info" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        <option  value="cad">Canadian dollar</option>
+        <option value="usd">US dollar</option>
+        <option value="sol">Soles</option>    
+    </select>
+    </div>
+  </div>
+
+          <div class="offcanvas-body">
+          <p id="no-items">Theres no items in your cart</p></div>
+        
+      </div>
+
+</section>
+
+<!--Creating the checkout part -->
+<!--In this part it creates input so the user can fill it with their information-->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <ul class="nav nav-pills nav-fill mb3" id="pills-tab" role="tablist">
+          <!--------------------------------- Tabs Of CheckOut----------------------->
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-labelledby="pills-home-tab">
+                <i class="bi bi-credit-card"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-credit-card" viewBox="0 0 16 16">
+                  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1H2zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V7z"/>
+                  <path d="M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1v-1z"/>
+                </svg> Payment Method</i>
+              </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-billing-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-labelledby="pills-profile-tab">
+                <i class="bi bi-postcard"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-postcard" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M2 2a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2ZM1 4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4Zm7.5.5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7ZM2 5.5a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1H2.5a.5.5 0 0 1-.5-.5Zm0 2a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1H2.5a.5.5 0 0 1-.5-.5Zm0 2a.5.5 0 0 1 .5-.5H6a.5.5 0 0 1 0 1H2.5a.5.5 0 0 1-.5-.5ZM10.5 5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3ZM13 8h-2V6h2v2Z"/>
+                </svg> Billing Details</i>
+              </button>
+            </li>
+
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact" type="button" role="tab" aria-controls="pills-contact" aria-labelledby="pills-contact-tab">
+                <i class="bi bi-truck"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                  <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                </svg> Shipping Details</i>
+              </button>
+
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="pills-confirmation-tab" data-bs-toggle="pill" data-bs-target="#pills-confirm" type="button" role="tab" aria-controls="pills-confirms" aria-labelledby="pills-disabled-tab">
+                <i class="bi bi-bag-check-fill"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-check-fill" viewBox="0 0 16 16">
+                  <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0zm-.646 5.354a.5.5 0 0 0-.708-.708L7.5 10.793 6.354 9.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l3-3z"/>
+                </svg> Order Confirmation</i>
+              </button>
+            </li>
+          </ul>
+          <!---Payment Method-->
+            <div class="tab-content" id="pills-tabContent">
+              <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
+                <br>
+                <h3>Payment Method</h3>
+                <div class="mb-3">
+                  <label for="cart-number" class="form-label">Cart Number</label>
+                  <input type="number" class="form-control" id="cart-number" placeholder="4444 5555 3333 1111">
+                </div>
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                          <label for="expiration-date" class="form-label">Expiration Dates</label>
+                          <input type="number" class="form-control" id="expiration-date" placeholder="MM">
+                      </div>
+                      <div class="col-md-4">
+                        <label for="year" class="form-label">Year</label>
+                        <input type="number" class="form-control" id="year" placeholder="YYYY">
+                      </div>
+                        <div class="col-md-4">
+                          <label for="security-code" class="form-label">Security Code</label>
+                          <input type="number" class="form-control" id="security-code" placeholder="123">
+                        </div>
+                  </div>
+                </div>
+              
+              </div>
+              <!---Billing Details-->
+              <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab" tabindex="0">
+                <br>
+                <h3>Billing Details</h3>
+                <div class="container-fluid">
+                  <div class="row">
+                      <div class="col">
+                        <label for="first-name" class="form-label">First Name</label>
+                        <input type="text" class="form-control" id="first-name" placeholder="First Name">
+                    </div>
+                    <div class="col">
+                      <label for="last-name" class="form-label">Last Name</label>
+                      <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="billing-adrress01" class="form-label">Billing Address</label>
+                      <input type="text" class="form-control" id="billing-adrress01" placeholder="Billing Address">
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="billing-adrress02" class="form-label">Billing Address Line 2</label>
+                      <input type="text" class="form-control" id="billing-adrress02" placeholder="Billing Address">
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="city" class="form-label">City</label>
+                      <input type="text" class="form-control" id="city" placeholder="City">
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="province-state" class="form-label">Province/State</label>
+                    <input class="form-control" name="province-or-state" list="province-state-cad-usd" id="prv-state">
+                    <datalist id="province-state-cad-usd"></datalist>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="country" class="form-label">Country</label>
+                    <select class="form-control" id="country-select" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                      <option disabled selected>Choose Country</option>
+                      <option>CA</option>
+                      <option>US</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="postal-code" class="form-label">Postal Code/ZIP</label>
+                  <input type="text" class="form-control" id="postal-code" placeholder="V1V 1V1 / 12345">
+                </div>
+
+                <div class="mb-3">
+                  <label for="phone" class="form-label">Phone</label>
+                  <input type="number" class="form-control" id="phone" placeholder="(250) 555-1234">
+                </div>
+
+
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email Address</label>
+                  <input type="text" class="form-control" id="email" placeholder="name@example.com">
+                </div>
+                
+
+                </div>
+              </div>
+              
+              </div>
+               <!---Shipping Details-->
+              <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+                <br>
+                <h3>Shipping Details</h3>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox"  id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Shipping information is same as my billin details.
+                  </label>
+                </div>
+                <div class="container-fluid" id="shipping-details-view">
+                  <div class="row">
+                      <div class="col">
+                            <label for="first-name" class="form-label">First Name</label>
+                            <input type="text" class="form-control" id="first-name-ship" placeholder="First Name">
+                        </div>
+                        <div class="col">
+                          <label for="last-name" class="form-label">Last Name</label>
+                          <input type="text" class="form-control" id="last-name-ship" placeholder="Last Name">
+                        </div>
+
+
+                        <div class="mb-3">
+                          <label for="billing-adrress01" class="form-label">Billing Address</label>
+                          <input type="text" class="form-control" id="billing-adrress01-ship" placeholder="Billing Address">
+                        </div>
+
+                        <div class="mb-3">
+                          <label for="billing-adrress02" class="form-label">Billing Address Line 2</label>
+                          <input type="text" class="form-control" id="billing-adrress02-ship" placeholder="Billing Address">
+                        </div>
+
+                        <div class="col-md-6">
+                          <label for="city" class="form-label" id="testing-label">City</label>
+                          <input type="text" class="form-control" id="city-ship" placeholder="City">
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="province-state" class="form-label">Province/State</label>
+                        <input class="form-control" name="province-or-state" list="province-state-cad-usd-ship" id="prv-state-ship">
+                        <datalist id="province-state-cad-usd-ship"></datalist>
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="country" class="form-label">Country</label>
+                        <select class="form-control" id="country-select-ship" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+                          <option disabled selected>Choose Country</option>
+                          <option>CA</option>
+                          <option>US</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="postal-code" class="form-label">Postal Code/ZIP</label>
+                      <input type="text" class="form-control" id="postal-code-ship" placeholder="V1V 1V1 / 12345">
+                    </div>
+                    </div>
+                </div>  
+              </div>
+               <!---Order Confirmation-->
+              <div class="tab-pane fade" id="pills-confirm" role="tabpanel" aria-labelledby="pills-disabled-tab" tabindex="0">
+                <br>
+                <h3>Order Confirmation</h3>
+                <div class="text-right" id="order-details"></div>
+
+              </div>
+            </div>
+        </div>
+        <!--Creating the buttons so the user can continue with the checkout-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" id="continue-button">Continue</button>
+          <button type="button" class="btn btn-primary" id="billing-button">Continue</button>
+          <button type="button" class="btn btn-primary" id="shipping-button">Continue</button>
+          <button type="button" class="btn btn-primary" id="confirm-button">Confirm Orders</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<section class="items">
+<div class="container">
+  <div class="row" data-masonry='{"percentPosition": true }' id="catalog_view">
+
+  </div>
+</div>
+</section>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/masonry-layout@4.2.2/dist/masonry.pkgd.min.js" integrity="sha384-GNFwBvfVxBkLMJpYMOABq3c+d3KnQxudP/mGPkzpZSTYykLBNsZEnG2D9G/X/+7D" crossorigin="anonymous" async></script>
+    <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script>
+    <script src="https://deepblue.camosun.bc.ca/~c0180354/ics128/final/cookie-manager.js"></script>
+   <script src="includes/script.js"></script>
+</body>
+</html>
+
+
